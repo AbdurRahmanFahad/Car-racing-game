@@ -13,6 +13,9 @@ Just open the `code` folder as a project in Visual Studio. Run `iMain.cpp`.
 Alternatively you can open a new visual c++ empty project and follow instructions from [**here**](https://www.youtube.com/watch?v=9NtOduwGeB4&list=PLKiZXxQe7OiDVNhkwgGZ6A6xW-zMbnSXb&index=1)
 
 ## Demo from the game
+
+![0](/screenshots/game.gif)
+
 ![1](/screenshots/demo1.png)
 
 ![2](/screenshots/demo2.png)
