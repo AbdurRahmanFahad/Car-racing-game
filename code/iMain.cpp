@@ -1,6 +1,6 @@
-#include<bits/stdc++.h>
+//#include<bits/stdc++.h>
 # include "iGraphics.h"
-char* btnPauseText="PAUSE";
+string btnPauseText="PAUSE";
 bool running=true;
 bool gameOver=false;
 int pic_x = 500, pic_y = 80;
@@ -159,7 +159,7 @@ void setScore()
 {
 	if(play==1)
 		score++;
-	itoa(score,str_score,10);
+	_itoa_s(score,str_score,10);
 }
 void move()
 {
@@ -220,7 +220,7 @@ void home()
 	iClear();
 	iSetColor(255, 0, 50);
 	iShowBMP(0, 0, "forza.bmp");
-	iShowBMP(400, 400, "nfs.bmp");
+	//iShowBMP(400, 400, "nfs.bmp");
 	iFilledRectangle(400, 300, 100, 50);
 	iShowBMP(400, 300, "images.bmp");
 	iShowBMP(400, 200, "quit.bmp");
@@ -249,7 +249,7 @@ void mygame()
 	iShowBMP(pic_x, pic_y, "smurf.bmp");
 	iSetColor(255,255,0);
 	char fin_score[25]="Score: ";
-	strcat(fin_score, str_score);
+	strcat_s(fin_score, str_score);
 	iText(1100,500,fin_score, GLUT_BITMAP_HELVETICA_18);
 	iSetColor(255,0,0);
 	iRectangle(1100,400,70,25);
@@ -269,8 +269,8 @@ void iDraw()
 		iSetColor(255,255,0);
 		char fin_score[27]="Your Score was: ";
 		char val_score[5];
-		itoa(score,val_score,10);
-		strcat(fin_score,val_score);
+		_itoa_s(score,val_score,10);
+		strcat_s(fin_score,val_score);
 		iText(1300/2-50,500,"Game Over",GLUT_BITMAP_TIMES_ROMAN_24);
 		iSetColor(77,255,77);
 		iText(1300/2-60,450,fin_score);
@@ -306,8 +306,13 @@ void iMouse(int button, int state, int mx, int my)
 				play = 0;
 		}}
 	else if(gameOver){
-		if(mx >= 628 && mx <= (628+54) && my >= 400 && my <= 425)
+		if (mx >= 628 && mx <= (628 + 54) && my >= 400 && my <= 425)
+		{
+			//gameOver = 0;
+			//return main();
 			exit(0);
+			
+		}
 	}
 	else{
 		if(mx>=1100&&mx<=1170&&my>=400&&my<=425)

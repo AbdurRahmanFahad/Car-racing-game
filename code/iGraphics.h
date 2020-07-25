@@ -10,7 +10,8 @@
 ///last modified by: Asif Imtiaz Shaafi
 ///date: January 21, 2016
 ///modified things: iText2 added and string header file added
-
+//#include<bits/stdc++.h>
+#pragma comment (lib, "legacy_stdio_definitions.lib")
 # include <stdio.h>
 # include <stdlib.h>
 #pragma comment(lib, "glut32.lib")
@@ -21,6 +22,8 @@
 #include <windows.h>
 #include "glaux.h"
 #include <string>
+#include <string>
+using namespace std;
 
 int iScreenHeight, iScreenWidth;
 int iMouseX, iMouseY;
@@ -101,10 +104,13 @@ void iResumeTimer(int index){
 //                
 //                To disable this feature, put -1 in this parameter
 //
-void iShowBMP2(int x, int y, char filename[], int ignoreColor)
+void iShowBMP2(int x, int y, string filename, int ignoreColor)
 {
+	std::wstring stemp = std::wstring(filename.begin(), filename.end());
+	LPCWSTR sw = stemp.c_str();
+
 	AUX_RGBImageRec *TextureImage;
-	TextureImage = auxDIBImageLoad(filename);
+	TextureImage = auxDIBImageLoad(sw);
 
 	int i, j;
 	int width = TextureImage->sizeX;
@@ -132,7 +138,7 @@ void iShowBMP2(int x, int y, char filename[], int ignoreColor)
 	free(TextureImage);
 }
 
-void iShowBMP(int x, int y, char filename[])
+void iShowBMP(int x, int y, string filename)
 {
 	iShowBMP2(x, y, filename, -1 /* ignoreColor */);
 }
@@ -150,7 +156,7 @@ void iGetPixelColor(int cursorX, int cursorY, int rgb[])
 	//printf("%d %d %d\n",pixel[0],pixel[1],pixel[2]);   
 }
 
-void iText(GLdouble x, GLdouble y, char *str, void* font = GLUT_BITMAP_8_BY_13)
+void iText(GLdouble x, GLdouble y, string str, void* font = GLUT_BITMAP_8_BY_13)
 {
 	glRasterPos3d(x, y, 0);
 	int i;
@@ -404,7 +410,7 @@ void mouseHandlerFF(int button, int state, int x, int y)
 	glFlush();
 }
 
-void iInitialize(int width = 500, int height = 500, char *title = "iGraphics")
+void iInitialize(int width = 500, int height = 500, string title = "iGraphics")
 {
 	iScreenHeight = height;
 	iScreenWidth = width;
@@ -412,7 +418,8 @@ void iInitialize(int width = 500, int height = 500, char *title = "iGraphics")
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_ALPHA);
 	glutInitWindowSize(width, height);
 	glutInitWindowPosition(10, 10);
-	glutCreateWindow(title);
+	const char* c = title.c_str();
+	glutCreateWindow(c);
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
