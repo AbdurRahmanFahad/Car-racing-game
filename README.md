@@ -20,8 +20,6 @@ Alternatively you can open a new visual c++ empty project and follow instruction
 
 ![2](/screenshots/demo2.png)
 
-![3](/screenshots/demo3.png)
-
 ![4](/screenshots/demo4.png)
 
 ## YouTube Video link
